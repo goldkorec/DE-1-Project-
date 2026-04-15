@@ -1,0 +1,25 @@
+#-----------------------------------------------------------
+# Vivado v2025.2 (64-bit)
+# SW Build 6299465 on Fri Nov 14 19:35:11 GMT 2025
+# IP Build 6300035 on Fri Nov 14 10:48:45 MST 2025
+# SharedData Build 6298862 on Thu Nov 13 04:50:51 MST 2025
+# Start of session at: Wed Apr 15 09:30:31 2026
+# Process ID         : 14604
+# Current directory  : C:/Users/270952/Documents/pwm
+# Command line       : vivado.exe -gui_launcher_event rodinguilauncherevent12340 C:\Users\270952\Documents\pwm\pwm.xpr
+# Log file           : C:/Users/270952/Documents/pwm/vivado.log
+# Journal file       : C:/Users/270952/Documents/pwm\vivado.jou
+# Running On         : PC-629
+# Platform           : Windows Server 2016 or Windows 10
+# Operating System   : 26200
+# Processor Detail   : Intel(R) Core(TM) i3-9100 CPU @ 3.60GHz
+# CPU Frequency      : 3600 MHz
+# CPU Physical cores : 4
+# CPU Logical cores  : 4
+# Host memory        : 8423 MB
+# Swap memory        : 5369 MB
+# Total Virtual      : 13793 MB
+# Available Virtual  : 1301 MB
+#-----------------------------------------------------------
+start_guioopen_project C:/Users/270952/Documents/pwm/pwm.xprupdate_compile_order -fileset sources_1
+reset_project

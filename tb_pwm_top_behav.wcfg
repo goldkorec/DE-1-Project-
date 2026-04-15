@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="tb_pwm_top_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="tb_pwm_top" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="24.475227 us"></ZoomStartTime>
+      <ZoomEndTime time="90.525228 us"></ZoomEndTime>
+      <Cursor1Time time="35.483560 us"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="152"></NameColumnWidth>
+      <ValueColumnWidth column_width="107"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="6" />
+   <wvobject fp_name="/tb_pwm_top/s_clk" type="logic">
+      <obj_property name="ElementShortName">s_clk</obj_property>
+      <obj_property name="ObjectShortName">s_clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_pwm_top/s_rst" type="logic">
+      <obj_property name="ElementShortName">s_rst</obj_property>
+      <obj_property name="ObjectShortName">s_rst</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_pwm_top/s_en" type="logic">
+      <obj_property name="ElementShortName">s_en</obj_property>
+      <obj_property name="ObjectShortName">s_en</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_pwm_top/uut_pwm_top/sig_ce" type="logic">
+      <obj_property name="ElementShortName">sig_ce</obj_property>
+      <obj_property name="ObjectShortName">sig_ce</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_pwm_top/uut_pwm_top/sig_jas_upraveny" type="array">
+      <obj_property name="ElementShortName">sig_jas_upraveny[7:0]</obj_property>
+      <obj_property name="ObjectShortName">sig_jas_upraveny[7:0]</obj_property>
+      <obj_property name="Radix">BINARYRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_pwm_top/s_pwm_out" type="array">
+      <obj_property name="ElementShortName">s_pwm_out[15:0]</obj_property>
+      <obj_property name="ObjectShortName">s_pwm_out[15:0]</obj_property>
+      <obj_property name="Radix">BINARYRADIX</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+   </wvobject>
+</wave_config>
