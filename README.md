@@ -4,17 +4,17 @@ Cílem projektu je implementace digitálního systému pro plynulé řízení ja
 
 Princip spočívá v rychlém přepínání LED pomocí pulzně-šířkové modulace (PWM). Střída signálu (duty) se plynule mění, přičemž frekvence blikání je vysoká tak, aby lidské oko vnímalo pouze změnu intenzity světla, nikoliv samotné blikání.
 
-**Členové týmu:**
+## **Členové týmu:**
 
 - Robin Klapetek
 - Pavel Korec
 
-**Schéma**
+## **Schéma**
 
 **![](images/schema.png
 )**
 
-**Základní parametry**
+## **Základní parametry**
 
 - **I/O Porty:**
   - **clk (in)** - Hlavní hodinový signál desky 100MHz
