@@ -54,7 +54,9 @@ Princip spočívá v rychlém přepínání LED pomocí pulzně-šířkové modu
 
 **Simulace (jeste nedokoncena dokumentace, rozbita kvalita obrazku simulaci bude opravena v CP, došlo k chybě exportu)**
 
-**![](images/sim1.png)** Přechod LED ze stavu kdy nesvítí do stavu kdy svítí:
+**![](images/sim1.png)** 
+
+Přechod LED ze stavu kdy nesvítí do stavu kdy svítí:
 
 **![](images/sim2.png)**
 
