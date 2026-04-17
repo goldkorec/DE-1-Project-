@@ -1,4 +1,4 @@
-**PROJEKT PWM BREATHING LED**
+# **PROJEKT PWM BREATHING LED**
 
 Cílem projektu je implementace digitálního systému pro plynulé řízení jasu všech 16 LED diod na desce Nexys A7-50T. Jas diod se periodicky mění (lineární nárůst a pokles), čímž simuluje efekt „dýchání".
 
