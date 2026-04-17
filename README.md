@@ -32,19 +32,19 @@ Princip spočívá v rychlém přepínání LED pomocí pulzně-šířkové modu
 - **PWM komparátor** \- tvorba PWM signálu (sig_pwm_single). Porovnává se hodnota rychlého čítače a úrovně jasu. Pokud je hodnota rychlého čítače menší než hodnota upraveného jasu ( unsigned(sig_cnt_pwm) &lt; unsigned(sig_jas_upraveny) ) a zároveň máme zapnutý switch (en =&gt; '1'), je na výstup poslána logická '1'. Tím se automaticky mění šířka pulzu úměřně jasu.
 
 - **Časování a ostatní parametry:**
-  - **Systémové signály**:
+  - 1. **Systémové signály**:
 
 **Hodiny (clk):** 100 MHz (perioda 10 ns)
 
 **Reset (rst):** Active-Low - v top levelu invertován
 
-- 1. **Parametry PWM modulace:**
+- 2. **Parametry PWM modulace:**
 
 **Rozlišení:** 8 bitů (256 úrovní třídy)
 
 **Frekvence PWM:** cca 390,6 kHz (100MHz/256) - Zamezuje, aby blikání bylo viditelné.
 
-- 1. **Parametry dýchání:**
+- 3. **Parametry dýchání:**
 
 **Řízení směru:** 9bitový čítač (0-511, 9. bit (MSB) určuje směr (0 - jas roste, 1 - jas klesá), spodních 8 bitů určuje střídu PWM.
 
