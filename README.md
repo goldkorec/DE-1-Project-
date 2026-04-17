@@ -64,4 +64,4 @@ LED blikají, ale blikají tak rychle, že to lidské oko nevídí a tím se vyt
 
 **![](images/sim3.png)**
 
-Simulace potvrzuje správnou funkci PWM modulu. Na průběhu s_pwm_out je vidět změna střídy v závislosti na rostoucí hodnotě signálu sig_jas_upraveny. Signál sig_ce korektně generuje pulzy pro inkrementaci jasu. Všech 16 kanálů výstupní sběrnice má identický průběh, což potvrzuje synchronní fungování.
+Simulace potvrzuje správnou funkci PWM modulu. Na průběhu s_pwm_out je vidět změna střídy v závislosti na rostoucí hodnotě signálu sig_jas_upraveny. Signál sig_ce správně generuje pulzy pro inkrementaci jasu. Všech 16 kanálů out sběrnice má identický průběh, což potvrzuje synchronní fungování.
