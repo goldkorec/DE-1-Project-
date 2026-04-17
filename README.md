@@ -52,9 +52,9 @@ Princip spočívá v rychlém přepínání LED pomocí pulzně-šířkové modu
 
 **Délka cyklu:** Kompletní cyklus trvá 2,56 sekundy z toho 1,28 s - rozsvěcovaní a 1,28 s - zhasínání.
 
-**Simulace (jeste nedokoncena dokumentace) **
+**Simulace (jeste nedokoncena dokumentace, rozbita kvalita obrazku simulaci bude opravena v CP, došlo k chybě exportu)**
 
-**![](images/sim1.png)**Přechod LED ze stavu kdy nesvítí do stavu kdy svítí:
+**![](images/sim1.png)** Přechod LED ze stavu kdy nesvítí do stavu kdy svítí:
 
 **![](images/sim2.png)**
 
@@ -62,4 +62,4 @@ LED blikají, ale blikají tak rychle, že to lidské oko nevídí a tím se vyt
 
 **![](images/sim3.png)**
 
-Simulace potvrzuje správnou funkci PWM modulu. Na průběhu s_pwm_out je patrná změna střídy v závislosti na rostoucí hodnotě signálu sig_jas_upraveny. Signál sig_ce korektně generuje pulzy pro inkrementaci jasu. Všech 16 kanálů výstupní sběrnice vykazuje identický průběh, což potvrzuje synchronní dýchání všech LED.
+Simulace potvrzuje správnou funkci PWM modulu. Na průběhu s_pwm_out je vidět změna střídy v závislosti na rostoucí hodnotě signálu sig_jas_upraveny. Signál sig_ce korektně generuje pulzy pro inkrementaci jasu. Všech 16 kanálů výstupní sběrnice má identický průběh, což potvrzuje synchronní fungování.
