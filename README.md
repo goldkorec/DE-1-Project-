@@ -56,12 +56,12 @@ Princip spočívá v rychlém přepínání LED pomocí pulzně-šířkové modu
 
 **![](images/sim1.png)** 
 
-Přechod LED ze stavu kdy nesvítí do stavu kdy svítí:
+Snímek zachycuje detailní průběh signálů v řádu nanosekund. Je zde vidět vztah mezi systémovými hodinami s_clk a aktivačním signálem sig_ce (Clock Enable). Díky němu se jas LED nemění při každém kmitu hodin, ale plynule. Výstupní signál s_pwm_out mění svůj stav v závislosti na vnitřním čítači, který je taktován těmito hodinami.
 
 **![](images/sim2.png)**
 
-LED blikají, ale blikají tak rychle, že to lidské oko nevídí a tím se vytváří efekt postupného „dýchání".
+Na tomto snímku je vidět princip PWM modulace. Jak se postupně zvyšuje hodnota v registru jasu (sig_jas), prodlužuje se doba, po kterou je výstupní signál v logické jedničce. Tím se mění množství energie, kterou LED dostává. Čím je logická 1 širší, tím déle LED svítí a lidskému oku se zdá, že svítí víc.
 
 **![](images/sim3.png)**
 
-Simulace potvrzuje správnou funkci PWM modulu. Na průběhu s_pwm_out je vidět změna střídy v závislosti na rostoucí hodnotě signálu sig_jas_upraveny. Signál sig_ce správně generuje pulzy pro inkrementaci jasu. Všech 16 kanálů out sběrnice má identický průběh, což potvrzuje synchronní fungování.
+Tento snímek zachycuje dlouhý časový úsek simulace (v řádu milisekund), který umožňuje sledovat dynamiku celého systému. Jednotlivé PWM pulzy jsou při tomto oddálení vykresleny jako husté bloky, jejichž šířka se plynule mění od minima po maximum. Tato modulace přímo odpovídá plynulému rozsvěcování a zhasínání všech 16 výstupních LED diod (piny pwm_out[0] až [15]).
