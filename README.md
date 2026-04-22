@@ -60,7 +60,7 @@ Snímek zachycuje detailní průběh signálů v řádu nanosekund. Je zde vidě
 
 **![](images/sim2.png)**
 
-Na tomto snímku je vidět princip PWM modulace. Jak se postupně zvyšuje hodnota v registru jasu (sig_jas), prodlužuje se doba, po kterou je výstupní signál v logické jedničce. Tím se mění množství energie, kterou LED dostává. Čím je logická 1 širší, tím déle LED svítí a lidskému oku se zdá, že svítí víc.
+Na tomto snímku je vidět princip PWM modulace. Jak se postupně zvyšuje hodnota v registru jasu (sig_jas), prodlužuje se doba, po kterou je výstupní signál v logické jedničce. Tím se mění množství energie, kterou LED dostává. Čím je logická 1 širší, tím déle LED svítí a lidskému oku se zdá, že svítí víc. LED bliká tak rychle, že to lidské oko nepostřehne.
 
 **![](images/sim3.png)**
 
