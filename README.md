@@ -52,7 +52,7 @@ Princip spočívá v rychlém přepínání LED pomocí pulzně-šířkové modu
 
 **Délka cyklu:** Kompletní cyklus trvá 2,56 sekundy z toho 1,28 s - rozsvěcovaní a 1,28 s - zhasínání.
 
-## **Simulace (jeste nedokoncena dokumentace, rozbita kvalita obrazku simulaci bude opravena v CP, došlo k chybě exportu)**
+## **Simulace (dokončit popis)**
 
 **![](images/sim1.png)** 
 
