@@ -23,7 +23,7 @@ begin
             pwm_out => s_pwm_out
         );
 
-    -- Generování hodin
+
     p_clk_gen : process
     begin
         while now < 10 ms loop
@@ -35,31 +35,31 @@ begin
         wait;
     end process p_clk_gen;
 
-    -- Stimulus proces
+
     p_stimulus : process
     begin
-        report "Zacatek simulace..." severity note;
+        report "Simulation start..." severity note;
 
-        -- A. Výchozí stav (Reset na Nexys A7 je Active Low, takže '0' = RESET)
+       
         s_en  <= '0';
-        s_rst <= '0'; -- RESET JE AKTIVNÍ
+        s_rst <= '0';
         wait for 50 ns;
 
-        -- B. Uvolníme reset (Nastavíme na '1', jako když tlačítko nedržíme)
-        s_rst <= '1'; -- BĚŽNÝ PROVOZ
+       
+        s_rst <= '1';
         wait for 100 ns;
 
-        -- C. Zapneme efekt
+       
         s_en  <= '1';
-        
-        -- D. Simulace běhu (v simulaci Vivado uvidíš v průběhu waveformy všech 16 bitů stejně)
-        wait for 2 ms; 
+       
+       
+        wait for 2 ms;
 
-        -- E. Test resetu za běhu (stiskneme tlačítko -> logická 0)
+       
         s_rst <= '0';
         wait for 50 ns;
         s_rst <= '1';
-        
+       
         wait for 1 ms;
 
 
