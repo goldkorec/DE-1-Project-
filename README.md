@@ -70,4 +70,6 @@ Tento snímek zachycuje dlouhý časový úsek simulace (v řádu milisekund), k
 
 **![](images/sim5.png)**
 
+## **Resource Report**
 
+**![](images/utilization.png)**
