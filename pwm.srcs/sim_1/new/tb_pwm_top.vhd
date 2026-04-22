@@ -11,7 +11,7 @@ architecture testbench of tb_pwm_top is
     signal s_clk     : std_logic;
     signal s_rst     : std_logic;
     signal s_en      : std_logic;
-    signal s_pwm_out : std_logic_vector(15 downto 0); -- ZMĚNA NA VEKTOR
+    signal s_pwm_out : std_logic_vector(15 downto 0);
 
 begin
 
