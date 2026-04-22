@@ -70,7 +70,7 @@ Tento snímek zachycuje dlouhý časový úsek simulace (v řádu milisekund), k
 
 **![](images/sim5.png)**
 ### **Odkaz na testbench**
-**![Zobrazit testbench](pwm.srcs/sim_1/new/tb_pwm_top.vhd)**
+**[Zobrazit testbench](pwm.srcs/sim_1/new/tb_pwm_top.vhd)**
 
 ## **Resource Report**
 
