@@ -4,21 +4,20 @@ use ieee.numeric_std.all;
 
 entity pwm_top is
     port (
-        clk     : in  std_logic;
-        rst     : in  std_logic;
-        en      : in  std_logic;
-        pwm_out : out std_logic_vector(15 downto 0)  
+        clk: in std_logic;
+        rst: in std_logic;
+        en: in std_logic;
+        pwm_out : out std_logic_vector(15 downto 0)
     );
 end entity pwm_top;
 
 architecture Behavioral of pwm_top is
 
-    signal sig_ce               : std_logic;
-    signal sig_cnt_pwm          : std_logic_vector(7 downto 0);
-    signal sig_cnt_brightness   : std_logic_vector(8 downto 0);
-    signal sig_brightness_adj   : std_logic_vector(7 downto 0);
-   
-    signal sig_rst_inv          : std_logic;
+    signal sig_ce : std_logic;
+    signal sig_cnt_pwm : std_logic_vector(7 downto 0);
+    signal sig_cnt_brightness : std_logic_vector(8 downto 0);
+    signal sig_brightness_adj : std_logic_vector(7 downto 0);
+    signal sig_rst_inv : std_logic;
 
 begin
 
