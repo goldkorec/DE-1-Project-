@@ -16,11 +16,15 @@ Princip spočívá v rychlém přepínání LED pomocí pulzně-šířkové modu
 
 ## **Základní parametry**
 
-- **I/O Porty:**
-  - **clk (in)** - Hlavní hodinový signál desky 100MHz
-  - **rst (in)** - Asynchronní reset systému.
-  - **en (in)** - Switch, povoluje propouštění PWM signálu na výstup
-  - **pwm_out (out)** - 16bitová výstupní sběrnice připojená k 16 LED diodám. Všechny bity sběrnice jsou buzeny společným signálem sig_pwm_single (díky tomu LED synchronně svítí a „dýchají")
+### **I/O Ports**
+
+| Port | Směr | Šířka | Popis |
+| :--- | :---: | :---: | :--- |
+| **clk** | in | 1 bit | Hlavní hodinový signál desky (100 MHz). |
+| **rst** | in | 1 bit | Reset systému (na desce Nexys A7 Active-Low). |
+| **en** | in | 1 bit | Povolovací signál (Switch), aktivuje efekt dýchání. |
+| **pwm_out** | out | 16 bitů | Výstupní sběrnice připojená k 16 LED diodám. |
+
 - **Vnitřní moduly a logika systému:**
 
 - **clk_en_inst (generátor povolovacích pulzů)** - instance modulu clk_en sloužící jako dělička frekvence. Z hlavních 100 MHz generuje pomalé pulzy (clock enable). Frekvence těchto pulzů je dána parametrem G_MAX (určuje jak rychle bude probíhat efekt dýchání).
