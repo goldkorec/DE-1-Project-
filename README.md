@@ -27,8 +27,6 @@ Princip spočívá v rychlém přepínání LED pomocí pulzně-šířkové modu
 
 ### **Vnitřní moduly a logika systému**
 
-### **Vnitřní moduly a logika systému**
-
 | Modul / Komponenta | Parametry (Generics) | Funkce a detailní popis |
 | :--- | :---: | :--- |
 | **clk_en_inst** | `G_MAX = 500 000` | **Dělička frekvence.** Z hlavních 100 MHz generuje povolovací pulz `sig_ce` každých 5 ms (200 Hz). Určuje rychlost plynulé změny jasu. |
