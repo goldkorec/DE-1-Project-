@@ -11,7 +11,7 @@ Princip spočívá v rychlém přepínání LED pomocí pulzně-šířkové modu
 
 ## **Schéma**
 
-**![](images/schema.png
+**![](images/schema1.png
 )**
 
 ## **Základní parametry**
