@@ -18,12 +18,12 @@ Princip spočívá v rychlém přepínání LED pomocí pulzně-šířkové modu
 
 ### **I/O Ports**
 
-| Port | Směr | Šířka | Popis |
-| :--- | :---: | :---: | :--- |
-| **clk** | in | 1 bit | Hlavní hodinový signál desky (100 MHz). |
-| **rst** | in | 1 bit | Reset systému (na desce Nexys A7 Active-Low). |
-| **en** | in | 1 bit | Povolovací signál (Switch), aktivuje efekt dýchání. |
-| **pwm_out** | out | 16 bitů | Výstupní sběrnice připojená k 16 LED diodám. |
+| Port | Směr | Typ | Šířka | Popis |
+| :--- | :---: | :---: | :---: | :--- |
+| **clk** | in | std_logic | 1 bit | Hlavní hodinový signál desky (100 MHz). |
+| **rst** | in | std_logic | 1 bit | Reset systému (na desce Nexys A7 Active-Low). |
+| **en** | in | std_logic | 1 bit | Povolovací signál (Switch), aktivuje efekt dýchání. |
+| **pwm_out** | out | std_logic_vector | 16 bitů | Výstupní sběrnice připojená k 16 LED diodám. |
 
 ### **Vnitřní moduly a logika systému**
 
