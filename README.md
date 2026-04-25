@@ -25,36 +25,29 @@ Princip spočívá v rychlém přepínání LED pomocí pulzně-šířkové modu
 | **en** | in | 1 bit | Povolovací signál (Switch), aktivuje efekt dýchání. |
 | **pwm_out** | out | 16 bitů | Výstupní sběrnice připojená k 16 LED diodám. |
 
-- **Vnitřní moduly a logika systému:**
+### **Vnitřní moduly a logika systému**
 
-- **clk_en_inst (generátor povolovacích pulzů)** - instance modulu clk_en sloužící jako dělička frekvence. Z hlavních 100 MHz generuje pomalé pulzy (clock enable). Frekvence těchto pulzů je dána parametrem G_MAX (určuje jak rychle bude probíhat efekt dýchání).
-- **pwm_cnt_inst (rychlý čítač pro PWM)** - první instance modulu counter konfigurovaná jako 8bitový čítač. Tento blok vždy povolen (en => '1') a na plné rychlosti systémových hodin počíta od 0 do 255. Tím na svém výstupu tvoří rychlý digitální pilovitý signál - základ pro pulse width modulation (okem neviditelné blikání při frekvenci cca 390 kHz).
-- **jas_cnt_inst (čítač jasu - generování dýchání)** - druhá instance modulu counter, 9 bitů. Tento čítač je taktován pulzy sig_ce, počítá velmi pomalu od 0 do 511. Jeho hodnota reprezentuje jas.
-
-- **Logika nádechu a výdechu** - Směr změny jasu je určen nejvyšším 9. bitem (MSB). Pokud je MSB 0 (1. polovina periody), hodnota spodních 8 bitů se používá přímo a jas roste. Pokud je MSB 1 (2. polovina), spodních 8 bitů se neguje, čímž hodnota začne klesat - jas se snižuje. Výsledek se ukládá do sig_jas_upraveny
-
-- **PWM komparátor** \- tvorba PWM signálu (sig_pwm_single). Porovnává se hodnota rychlého čítače a úrovně jasu. Pokud je hodnota rychlého čítače menší než hodnota upraveného jasu ( unsigned(sig_cnt_pwm) &lt; unsigned(sig_jas_upraveny) ) a zároveň máme zapnutý switch (en =&gt; '1'), je na výstup poslána logická '1'. Tím se automaticky mění šířka pulzu úměřně jasu.
+| Modul / Komponenta | Funkce a popis |
+| :--- | :--- |
+| **clk_en_inst** | Dělička frekvence (Clock Enable). Z 100 MHz generuje pulzy pro krokování jasu. Parametr `G_MAX = 500 000`. |
+| **pwm_cnt_inst** | Rychlý 8bitový čítač. Běží na plné frekvenci hodin a tvoří základ pro PWM (pilovitý průběh). |
+| **brightness_cnt_inst** | 9bitový čítač jasu. Krokuje pomalu podle signálu `sig_ce` a určuje aktuální intenzitu světla. |
+| **Inhale/Exhale Logic** | Využívá 9. bit (MSB) čítače jasu pro určení směru. Provádí inverzi spodních 8 bitů pro efekt „výdechu“. |
+| **Output Register** | Synchronní proces (D-FF), který vzorkuje výsledek komparátoru a posílá ho na `pwm_out` s hranou hodin. |
 
 ## **Časování a ostatní parametry:**
 **1. Systémové signály**:
-
-**Hodiny (clk):** 100 MHz (perioda 10 ns)
-
-**Reset (rst):** Active-Low - v top levelu invertován
+- **Hodiny (clk):** 100 MHz (perioda 10 ns)
+- **Reset (rst):** Active-Low - v top levelu invertován na `sig_rst_inv`
 
 **2. Parametry PWM modulace:**
-
-**Rozlišení:** 8 bitů (256 úrovní třídy)
-
-**Frekvence PWM:** cca 390,6 kHz (100MHz/256) - Zamezuje, aby blikání bylo viditelné.
+- **Rozlišení:** 8 bitů (256 úrovní střídy)
+- **Frekvence PWM:** cca 390,6 kHz ($100\ \text{MHz}/256$) - zamezuje viditelnému blikání.
 
 **3. Parametry dýchání:**
-
-**Řízení směru:** 9bitový čítač (0-511, 9. bit (MSB) určuje směr (0 - jas roste, 1 - jas klesá), spodních 8 bitů určuje střídu PWM.
-
-**Rychlost krokování:** Dělička frekvence (G_MAX = 500 000) generuje povolovací pulz s frekvencí 200 Hz - jas se mění o 1 stupeň každých 5 ms.
-
-**Délka cyklu:** Kompletní cyklus trvá 2,56 sekundy z toho 1,28 s - rozsvěcovaní a 1,28 s - zhasínání.
+- **Řízení směru:** 9bitový čítač (0-511), 9. bit (MSB) určuje směr (0 - jas roste, 1 - jas klesá).
+- **Rychlost krokování:** Dělička frekvence (`G_MAX` = 500 000) generuje povolovací pulz s frekvencí 200 Hz.
+- **Délka cyklu:** Kompletní cyklus trvá 2,56 sekundy (1,28 s rozsvěcování, 1,28 s zhasínání).
 
 ## **Simulace**
 
