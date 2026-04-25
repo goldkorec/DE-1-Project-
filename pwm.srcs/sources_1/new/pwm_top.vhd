@@ -13,13 +13,12 @@ end entity pwm_top;
 
 architecture Behavioral of pwm_top is
 
-    signal sig_ce                : std_logic;
-    signal sig_cnt_pwm           : std_logic_vector(7 downto 0);
-    signal sig_cnt_brightness    : std_logic_vector(8 downto 0);
-    signal sig_brightness_adj    : std_logic_vector(7 downto 0);
+    signal sig_ce               : std_logic;
+    signal sig_cnt_pwm          : std_logic_vector(7 downto 0);
+    signal sig_cnt_brightness   : std_logic_vector(8 downto 0);
+    signal sig_brightness_adj   : std_logic_vector(7 downto 0);
    
-    signal sig_rst_inv           : std_logic;
-    signal sig_pwm_single        : std_logic;
+    signal sig_rst_inv          : std_logic;
 
 begin
 
@@ -59,8 +58,19 @@ begin
 
     sig_brightness_adj <= sig_cnt_brightness(7 downto 0) when sig_cnt_brightness(8) = '0' else not sig_cnt_brightness(7 downto 0);
 
-    sig_pwm_single <= '1' when (unsigned(sig_cnt_pwm) < unsigned(sig_brightness_adj)) and (en = '1') else '0';
-
-    pwm_out <= (others => sig_pwm_single);
+    process(clk)
+    begin
+        if rising_edge(clk) then
+            if sig_rst_inv = '1' then
+                pwm_out <= (others => '0');
+            else
+                if (unsigned(sig_cnt_pwm) < unsigned(sig_brightness_adj)) and (en = '1') then
+                    pwm_out <= (others => '1');
+                else
+                    pwm_out <= (others => '0');
+                end if;
+            end if;
+        end if;
+    end process;
 
 end architecture Behavioral;
