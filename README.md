@@ -27,13 +27,16 @@ Princip spočívá v rychlém přepínání LED pomocí pulzně-šířkové modu
 
 ### **Vnitřní moduly a logika systému**
 
-| Modul / Komponenta | Funkce a popis |
-| :--- | :--- |
-| **clk_en_inst** | Dělička frekvence (Clock Enable). Ze 100 MHz generuje pulzy pro krokování jasu. Parametr `G_MAX = 500 000`. |
-| **pwm_cnt_inst** | Rychlý 8bitový čítač. Běží na plné frekvenci hodin a tvoří základ pro PWM (pilovitý průběh). |
-| **brightness_cnt_inst** | 9bitový čítač jasu. Krokuje pomalu podle signálu `sig_ce` a určuje aktuální intenzitu světla. |
-| **Inhale/Exhale Logic** | Využívá 9. bit (MSB) čítače jasu pro určení směru. Provádí inverzi spodních 8 bitů pro efekt „výdechu“. |
-| **Output Register** | Synchronní proces (D-FF), který vzorkuje výsledek komparátoru a posílá ho na `pwm_out` s hranou hodin. |
+### **Vnitřní moduly a logika systému**
+
+| Modul / Komponenta | Parametry (Generics) | Funkce a detailní popis |
+| :--- | :---: | :--- |
+| **clk_en_inst** | `G_MAX = 500 000` | **Dělička frekvence.** Z hlavních 100 MHz generuje povolovací pulz `sig_ce` každých 5 ms (200 Hz). Určuje rychlost plynulé změny jasu. |
+| **pwm_cnt_inst** | `G_BITS = 8` | **PWM čítač.** Rychlý čítač běžící na 100 MHz. Počítá v rozsahu 0 až 255 a vytváří digitální pilovitý průběh pro PWM modulaci. |
+| **brightness_cnt_inst** | `G_BITS = 9` | **Čítač jasu.** Inkrementuje se pouze při aktivním `sig_ce`. Celkový rozsah 0 až 511 definuje jednu kompletní periodu "dýchání". |
+| **Inhale/Exhale Logic** | — | **Logika směru.** Využívá MSB (`bit 8`) čítače jasu. Pokud je `0`, jas roste (0–255). Pokud je `1`, spodních 8 bitů se neguje, čímž jas plynule klesá (255–0). |
+| **PWM Comparator** | — | **Komparátor.** Porovnává okamžitou hodnotu `pwm_cnt` s upravenou hodnotou jasu. Generuje signál `1`, pokud je čítač menší než jas a je aktivní vstup `en`. |
+| **Output Register** | — | **Sekvenční výstup (D-FF).** 16bitový registr synchronizovaný na `clk`. Stabilizuje výstupní signál a eliminuje hazardní stavy (glitche) na LED diodách. |
 
 ## **Časování a ostatní parametry:**
 **1. Systémové signály**:
