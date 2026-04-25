@@ -92,7 +92,7 @@ Vývoj projektu probíhal formou týmové spolupráce. I když je většina comm
 * **Video ukázka:** [Video bude doplněno po natočení]
 * **Poster:** [Obrázek posteru bude doplněn po vytvoření]
 * **Seznam použitých nástrojů:**
-    * **Vivado** (Návrh, syntéza, simulace)
+    * **Vivado 2025.2 (VHDL)** (Návrh, syntéza, simulace)
     * **GitHub** (Verzování kódu)
     * **ProfiCAD** (Tvorba blokového schématu)
 * **Reference:**
