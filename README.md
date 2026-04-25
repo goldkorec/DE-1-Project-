@@ -52,25 +52,30 @@ Princip spočívá v rychlém přepínání LED pomocí pulzně-šířkové modu
 
 **Délka cyklu:** Kompletní cyklus trvá 2,56 sekundy z toho 1,28 s - rozsvěcovaní a 1,28 s - zhasínání.
 
-## **Simulace (dokončit popis)**
+## **Simulace**
 
 **![](images/sim1.png)** 
 
-Snímek zachycuje detailní průběh signálů v řádu nanosekund. Je zde vidět vztah mezi systémovými hodinami s_clk a aktivačním signálem sig_ce (Clock Enable). Díky němu se jas LED nemění při každém kmitu hodin, ale plynule. Výstupní signál s_pwm_out mění svůj stav v závislosti na vnitřním čítači, který je taktován těmito hodinami.
+Na prvním snímku je zachycen detailní průběh na začátku simulace. Klíčový je zde vztah mezi systémovými hodinami s_clk (100 MHz) a povolovacím signálem sig_ce (Clock Enable). Je vidět, že sig_ce generuje krátké pulzy, které určují rychlost změny jasu. Výstup s_pwm_out zatím zůstává v nule, protože vnitřní čítač PWM ještě nepřekonal nastavenou hladinu jasu.
 
 **![](images/sim2.png)**
 
-Na tomto snímku je vidět princip PWM modulace. Jak se postupně zvyšuje hodnota v registru jasu (sig_jas), prodlužuje se doba, po kterou je výstupní signál v logické jedničce. Tím se mění množství energie, kterou LED dostává. Čím je logická 1 širší, tím déle LED svítí a lidskému oku se zdá, že svítí víc. 
+Zde je zobrazen princip PWM modulace v detailu. Horní sběrnice s_pwm_out[15:0] ukazuje stav všech 16 LED. Je vidět, že šířka logické jedničky (střída) se mění v závislosti na tom, jak vnitřní čítač PWM (sig_cnt_pwm) porovnává svou hodnotu s aktuálním registrem jasu. Čím je hodnota jasu vyšší, tím déle zůstává výstup v jedničce a lidskému oku se zdá, že LED svítí intenzivněji.
 
 **![](images/sim3.png)**
 
-Tento snímek zachycuje dlouhý časový úsek simulace (v řádu milisekund), který umožňuje sledovat dynamiku celého systému. Jednotlivé PWM pulzy jsou při tomto oddálení vykresleny jako husté bloky, jejichž šířka se plynule mění od minima po maximum. Tato modulace přímo odpovídá plynulému rozsvěcování a zhasínání všech 16 výstupních LED diod (piny pwm_out[0] až [15]).
+Tento snímek zachycuje delší časový úsek (jednotky milisekund), který ukazuje dynamiku „dýchání“. PWM pulzy jsou zde vidět jako husté bloky, které se plynule rozšiřují. Tento pohled potvrzuje, že modulace neprobíhá skokově, ale plynule, což je zásadní pro vizuální efekt lineárního nárůstu jasu na všech 16 výstupech současně.
 
 **![](images/sim4.png)**
 
+Snímek ukazuje logiku přechodu mezi „nádechem“ a „výdechem“. Sledujeme zde 9bitový čítač jasu, kde jeho nejvyšší bit (MSB) slouží jako přepínač směru. V momentě, kdy MSB změní stav, začne se hodnota jasu díky použitému multiplexoru a invertoru v kódu snižovat. Tím je realizován trojúhelníkový průběh jasu bez nutnosti složitých výpočtů.
+
 **![](images/sim5.png)**
+
+Poslední detail potvrzuje stabilitu výstupu. Všechny změny na výstupní sběrnici s_pwm_out jsou synchronizovány s náběžnou hranou hodin s_clk. Díky implementaci výstupního registru (D-FF) je eliminováno riziko vzniku hazardních stavů (glitchů), které by mohly nastat při souběhu změn v kombinační logice komparátoru a čítačů.
+
 ### **Odkaz na testbench**
-**[Zobrazit testbench](pwm.srcs/sim_1/new/tb_pwm_top.vhd)**
+**[Zobrazit testbench](PWM_Breathing_LED/pwm.srcs/sim_1/new/tb_pwm_top.vhd)**
 
 ## **Resource Report**
 
