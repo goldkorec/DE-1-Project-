@@ -6,7 +6,7 @@ Princip Pulzně-šířkové modulace (PWM): Základem řízení jasu u digitáln
 
 Střída (Duty Cycle): Definována jako $D = \frac{T_{ON}}{T_{PERIOD}} \cdot 100\,\%$. 
 
-Frekvence: Musí být dostatečně vysoká ($> 100\text{ Hz}$), aby oko díky své setrvačnosti vyhladilo blikání do konstantního jasu. V našem projektu cílíme na řádově jednotky kHz.
+Frekvence: Musí být dostatečně vysoká, aby oko díky své setrvačnosti vyhladilo blikání do konstantního jasu. V našem projektu cílíme na řádově jednotky kHz.
 
 ## **Členové týmu:**
 
