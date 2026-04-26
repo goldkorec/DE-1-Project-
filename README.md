@@ -58,7 +58,7 @@ Frekvence: Musí být dostatečně vysoká ($> 100\text{ Hz}$), aby oko díky sv
 
 **![](images/sim1.png)** 
 
-Na prvním snímku je zachycen detailní průběh na začátku simulace. Klíčový je zde vztah mezi systémovými hodinami s_clk (100 MHz) a povolovacím signálem sig_ce (Clock Enable). Je vidět, že sig_ce generuje krátké pulzy, které určují rychlost změny jasu. Výstup s_pwm_out zatím zůstává v nule, protože vnitřní čítač PWM ještě nepřekonal nastavenou hladinu jasu. Při bližším zkoumání je patrné, 
+Na prvním snímku je zachycen detailní průběh na začátku simulace. Klíčový je zde vztah mezi systémovými hodinami s_clk (100 MHz) a povolovacím signálem sig_ce (Clock Enable). Je vidět, že sig_ce generuje krátké pulzy, které určují rychlost změny jasu. Výstup s_pwm_out zatím zůstává v nule, protože vnitřní čítač PWM ještě nepřekonal nastavenou hladinu jasu. Při bližším zkoumání je patrné, střída signálu (Duty Cycle) na sběrnici s_pwm_out se mění v závislosti na vnitřním čítači, který porovnává svou hodnotu s prahovou úrovní. 
 
 **![](images/sim2.png)**
 
