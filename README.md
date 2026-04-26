@@ -70,7 +70,7 @@ Tento snímek zachycuje delší časový úsek (jednotky milisekund), který uka
 
 **![](images/sim4.png)**
 
-Snímek ukazuje logiku přechodu mezi „nádechem“ a „výdechem“. Sledujeme zde 9bitový čítač jasu, kde jeho nejvyšší bit (MSB) slouží jako přepínač směru. V momentě, kdy MSB změní stav, začne se hodnota jasu díky použitému multiplexoru a invertoru v kódu snižovat. Tím je realizován trojúhelníkový průběh jasu bez nutnosti složitých výpočtů. Využití MSB (nejvýznamnějšího bitu) jako přepínače směru čítání je efektivním řešením, které šetří hardwarové prostředky.
+Snímek ukazuje logiku přechodu mezi „nádechem“ a „výdechem“. Sledujeme zde 9bitový čítač jasu, kde jeho nejvyšší bit (MSB) slouží jako přepínač směru. V momentě, kdy MSB změní stav, začne se hodnota jasu díky použitému multiplexoru a invertoru v kódu snižovat. Tím je realizován trojúhelníkový průběh jasu bez nutnosti složitých výpočtů. Využití MSB (nejvýznamnějšího bitu) jako přepínače směru čítání je efektivním řešením, které šetří hardwarové prostředky. Simulace detailně zobrazuje moment inverze, kdy systém plynule přechází z fáze nárůstu do fáze poklesu.
 
 **![](images/sim5.png)**
 
