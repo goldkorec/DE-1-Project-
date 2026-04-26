@@ -66,7 +66,7 @@ Zde je zobrazen princip PWM modulace v detailu. Horní sběrnice s_pwm_out[15:0]
 
 **![](images/sim3.png)**
 
-Tento snímek zachycuje delší časový úsek (jednotky milisekund), který ukazuje dynamiku „dýchání“. PWM pulzy jsou zde vidět jako husté bloky, které se plynule rozšiřují. Tento pohled potvrzuje, že modulace neprobíhá skokově, ale plynule, což je zásadní pro vizuální efekt lineárního nárůstu jasu na všech 16 výstupech současně.
+Tento snímek zachycuje delší časový úsek (jednotky milisekund), který ukazuje dynamiku „dýchání“. PWM pulzy jsou zde vidět jako husté bloky, které se plynule rozšiřují. Tento pohled potvrzuje, že modulace neprobíhá skokově, ale plynule, což je zásadní pro vizuální efekt lineárního nárůstu jasu na všech 16 výstupech současně. Tento test potvrzuje, že zvolená frekvence PWM a rychlost inkrementace čítače jasu jsou v souladu,
 
 **![](images/sim4.png)**
 
