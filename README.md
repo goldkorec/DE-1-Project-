@@ -2,7 +2,11 @@
 
 Cílem projektu je implementace digitálního systému pro plynulé řízení jasu všech 16 LED diod na desce Nexys A7-50T. Jas diod se periodicky mění (lineární nárůst a pokles), čímž simuluje efekt „dýchání".
 
-Princip spočívá v rychlém přepínání LED pomocí pulzně-šířkové modulace (PWM). Střída signálu (duty) se plynule mění, přičemž frekvence blikání je vysoká tak, aby lidské oko vnímalo pouze změnu intenzity světla, nikoliv samotné blikání.
+Princip Pulzně-šířkové modulace (PWM): Základem řízení jasu u digitálních systémů je PWM. Protože digitální pin umí pouze logickou 0 (0 V) nebo logickou 1 (3.3 V), nemůžeme napětí měnit spojitě. Jas tedy simulujeme poměrem času, po který je dioda zapnutá ($T_{ON}$), k celkové periodě signálu ($T_{PERIOD}$). 
+
+Střída (Duty Cycle): Definována jako $D = \frac{T_{ON}}{T_{PERIOD}} \cdot 100\,\%$. 
+
+Frekvence: Musí být dostatečně vysoká ($> 100\text{ Hz}$), aby oko díky své setrvačnosti vyhladilo blikání do konstantního jasu. V našem projektu cílíme na řádově jednotky kHz.
 
 ## **Členové týmu:**
 
