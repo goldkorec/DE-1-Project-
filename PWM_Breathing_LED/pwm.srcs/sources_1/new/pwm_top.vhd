@@ -6,7 +6,8 @@ entity pwm_top is
     port (
         clk: in std_logic;
         rst: in std_logic;
-        en: in std_logic;
+        en: in std_logic;                      
+        sw: in std_logic_vector(3 downto 0);  
         pwm_out : out std_logic_vector(15 downto 0)
     );
 end entity pwm_top;
@@ -14,6 +15,8 @@ end entity pwm_top;
 architecture Behavioral of pwm_top is
 
     signal sig_ce : std_logic;
+    signal sig_ce_brightness : std_logic;        
+
     signal sig_cnt_pwm : std_logic_vector(7 downto 0);
     signal sig_cnt_brightness : std_logic_vector(8 downto 0);
     signal sig_brightness_adj : std_logic_vector(7 downto 0);
@@ -25,7 +28,7 @@ begin
 
     clk_en_inst : entity work.clk_en
         generic map (
-            G_MAX => 500000
+            G_MAX => 100000
         )
         port map (
             clk => clk,
@@ -33,6 +36,18 @@ begin
             ce  => sig_ce
         );
 
+
+    speed_ctrl_inst : entity work.speed_ctrl
+        port map (
+            clk    => clk,
+            rst    => sig_rst_inv,
+            ce_in  => sig_ce,
+            sw     => sw,
+            ce_out => sig_ce_brightness
+        );
+
+
+   
     pwm_cnt_inst : entity work.counter
         generic map (
             G_BITS => 8
@@ -51,7 +66,7 @@ begin
         port map (
             clk => clk,
             rst => sig_rst_inv,
-            en  => sig_ce,
+            en  => sig_ce_brightness,
             cnt => sig_cnt_brightness
         );
 
