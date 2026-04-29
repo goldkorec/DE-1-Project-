@@ -20,25 +20,60 @@ Frekvence: Musí být dostatečně vysoká, aby oko díky své setrvačnosti vyh
 
 ## **Základní parametry**
 
-### **I/O Ports**
+## **Architektura: TOP Level (`pwm_top`)**
+
+Modul `pwm_top` zastřešuje celou hierarchii projektu. Propojuje děličku frekvence, řadič rychlosti, čítače jasu a samotný PWM komparátor s výstupním registrem.
+
+### **I/O Porty (Top Level)**
 
 | Port | Směr | Typ | Šířka | Popis |
 | :--- | :---: | :---: | :---: | :--- |
 | **clk** | in | std_logic | 1 bit | Hlavní hodinový signál desky (100 MHz). |
-| **rst** | in | std_logic | 1 bit | Reset systému (na desce Nexys A7 Active-Low). |
-| **en** | in | std_logic | 1 bit | Povolovací signál (Switch), aktivuje efekt dýchání. |
+| **rst** | in | std_logic | 1 bit | Reset systému (na desce Nexys A7 Active-Low). V top levelu invertován. |
+| **en** | in | std_logic | 1 bit | Povolovací signál (Switch J15), aktivuje výstup PWM na LED. |
+| **sw** | in | std_logic_vector | 4 bity | Přepínače pro volbu rychlosti dýchání. |
 | **pwm_out** | out | std_logic_vector | 16 bitů | Výstupní sběrnice připojená k 16 LED diodám. |
 
-### **Vnitřní moduly a logika systému**
+### **Vnitřní moduly a komponenty**
 
 | Modul / Komponenta | Parametry (Generics) | Funkce a detailní popis |
 | :--- | :---: | :--- |
-| **clk_en_inst** | `G_MAX = 500 000` | **Dělička frekvence.** Z hlavních 100 MHz generuje povolovací pulz `sig_ce` každých 5 ms (200 Hz). Určuje rychlost plynulé změny jasu. |
-| **pwm_cnt_inst** | `G_BITS = 8` | **PWM čítač.** Rychlý čítač běžící na 100 MHz. Počítá v rozsahu 0 až 255 a vytváří digitální pilovitý průběh pro PWM modulaci. |
-| **brightness_cnt_inst** | `G_BITS = 9` | **Čítač jasu.** Inkrementuje se pouze při aktivním `sig_ce`. Celkový rozsah 0 až 511 definuje jednu kompletní periodu "dýchání". |
-| **Inhale/Exhale Logic** | — | **Logika směru.** Využívá MSB (`bit 8`) čítače jasu. Pokud je `0`, jas roste (0–255). Pokud je `1`, spodních 8 bitů se neguje, čímž jas plynule klesá (255–0). |
-| **PWM Comparator** | — | **Komparátor.** Porovnává okamžitou hodnotu `pwm_cnt` s upravenou hodnotou jasu. Generuje signál `1`, pokud je čítač menší než jas a je aktivní vstup `en`. |
-| **Output Register** | — | **Sekvenční výstup (D-FF).** 16bitový registr synchronizovaný na `clk`. Stabilizuje výstupní signál a eliminuje hazardní stavy (glitche) na LED diodách. |
+| **clk_en_inst** | `G_MAX = 100 000` | **Dělička frekvence.** Z hlavních 100 MHz generuje základní povolovací pulz `sig_ce` s frekvencí 1 kHz. |
+| **speed_ctrl_inst** | — | **Modul řízení rychlosti.** Přijímá 1 kHz pulzy a dělí je na základě stavu `sw`. Výstupem je `sig_ce_brightness`. |
+| **pwm_cnt_inst** | `G_BITS = 8` | **PWM čítač.** Rychlý čítač (100 MHz) určující frekvenci PWM (256 úrovní). |
+| **brightness_cnt_inst** | `G_BITS = 9` | **Čítač jasu.** Inkrementuje se pouze při aktivním `sig_ce_brightness`. Definuje periodu dýchání. |
+| **Inhale/Exhale Logic** | — | **Logika směru.** Využívá MSB čítače jasu pro přepínání mezi nárůstem a poklesem jasu. |
+| **Output Register** | — | **D-FF registr.** Synchronizuje výstup na `clk` a eliminuje hazardní stavy (glitche). |
+
+
+
+## **Architektura: Řízení rychlosti (`speed_ctrl`)**
+
+Tento modul umožňuje uživateli měnit rychlost plynulé změny jasu pomocí přepínačů na desce.
+
+### **I/O Porty (Speed Control)**
+
+| Port | Směr | Typ | Šířka | Popis |
+| :--- | :---: | :---: | :---: | :--- |
+| **clk** | in | std_logic | 1 bit | Systémové hodiny. |
+| **rst** | in | std_logic | 1 bit | Synchronní reset (Active-High). |
+| **ce_in** | in | std_logic | 1 bit | Vstupní puls (1 kHz) z hlavní děličky. |
+| **sw** | in | std_logic_vector | 4 bity | Vstupy z přepínačů pro volbu dělícího poměru. |
+| **ce_out** | out | std_logic | 1 bit | Výstupní clock enable určující rychlost změny jasu. |
+
+### **Logika přepínačů a rychlosti**
+
+Modul využívá vnitřní 4bitový čítač `cnt` k dělení vstupní frekvence 1 kHz:
+
+| Aktivní switch | Režim | Dělící poměr | Frekvence krokování jasu |
+| :--- | :--- | :---: | :--- |
+| **`sw(1)`** | **Nejrychlejší** | 1 | 1000 Hz |
+| **`sw(0)`** | **Rychlejší** | 2 | 500 Hz |
+| **`sw(2)`** | **Pomalejší** | 8 | 125 Hz |
+| **`sw(3)`** | **Nejpomalejší** | 16 | 62,5 Hz |
+| **Vše '0'** | **Výchozí** | 4 | 250 Hz |
+
+*Priorita je dána pořadím v kódu: sw(1) > sw(0) > sw(2) > sw(3).*
 
 ## **Časování a ostatní parametry:**
 **1. Systémové signály**:
