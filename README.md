@@ -111,10 +111,18 @@ Snímek ukazuje logiku přechodu mezi „nádechem“ a „výdechem“. Sleduje
 
 Poslední detail potvrzuje stabilitu výstupu. Všechny změny na výstupní sběrnici s_pwm_out jsou synchronizovány s náběžnou hranou hodin s_clk. Díky implementaci výstupního registru (D-FF) je eliminováno riziko vzniku hazardních stavů (glitchů), které by mohly nastat při souběhu změn v kombinační logice komparátoru a čítačů. Na waveformě je vidět, že i když se vnitřní stavy čítačů mění, výstupní sběrnice s_pwm_out se aktualizuje čistě a jednotně.
 
+### **Funkce ovládání rychlosti pomocí modulu speed_ctrl**
+
+**![](images/sim6.png)**
+
+**![](images/sim7.png)**
+
+**![](images/sim8.png)**
+
 ### **Odkaz na testbench**
 **[Zobrazit testbench](PWM_Breathing_LED/pwm.srcs/sim_1/new/tb_pwm_top.vhd)**
 
-### **Resource Report**
+### **Resource Report (nutno aktualizovat)**
 
 | Resource | Estimation | Available | Utilization [%] |
 | :--- | :---: | :---: | :---: |
