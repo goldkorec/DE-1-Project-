@@ -131,13 +131,13 @@ Tento snímek perfektně demonstruje dynamickou změnu rychlosti za běhu celéh
 ### **Odkaz na testbench**
 **[Zobrazit testbench](PWM_Breathing_LED/pwm.srcs/sim_1/new/tb_pwm_top.vhd)**
 
-### **Resource Report (nutno aktualizovat)**
+### **Resource Report**
 
 | Resource | Estimation | Available | Utilization [%] |
 | :--- | :---: | :---: | :---: |
-| **LUT (Logic)** | 22 | 32 600 | 0.07 |
-| **FF (Registers)** | 21 | 65 200 | 0.03 |
-| **IO (Pins)** | 19 | 210 | 9.05 |
+| **LUT (Logic)** | 32 | 32 600 | 0.10 |
+| **FF (Registers)** | 55 | 65 200 | 0.08 |
+| **IO (Pins)** | 23 | 210 | 10.95 |
 | **BUFG** | 1 | 32 | 3.13 |
 
 ## **Git Flow**
