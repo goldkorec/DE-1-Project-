@@ -111,7 +111,11 @@ Snímek ukazuje logiku přechodu mezi „nádechem“ a „výdechem“. Sleduje
 
 Poslední detail potvrzuje stabilitu výstupu. Všechny změny na výstupní sběrnici s_pwm_out jsou synchronizovány s náběžnou hranou hodin s_clk. Díky implementaci výstupního registru (D-FF) je eliminováno riziko vzniku hazardních stavů (glitchů), které by mohly nastat při souběhu změn v kombinační logice komparátoru a čítačů. Na waveformě je vidět, že i když se vnitřní stavy čítačů mění, výstupní sběrnice s_pwm_out se aktualizuje čistě a jednotně.
 
-### **Funkce ovládání rychlosti pomocí modulu speed_ctrl**
+### **Simulace ovládání rychlosti pomocí modulu speed_ctrl**
+
+#### **Metodika testování**
+
+Místo izolovaného Unit Testu jsme zvolili integrační testování v rámci TOP level testbenche. Tento přístup nám umožnil ověřit nejen vnitřní logiku modulu speed_ctrl, ale především jeho bezchybnou spolupráci s ostatními bloky a eliminaci hazardních stavů při změnách rychlosti. Díky využití hierarchického Scope v simulátoru Vivado jsme do waveformy vytáhli interní signály modulu (cnt, ce_out), čímž jsme dosáhli maximální viditelnosti vnitřních procesů přímo v kontextu celého systému.
 
 **![](images/sim6.png)**
 
