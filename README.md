@@ -126,7 +126,7 @@ Detailní pohled na generování povolovacího pulzu ce_out v modulu speed_ctrl.
 
 **![](images/sim8.png)**
 
-Tento snímek perfektně demonstruje dynamickou změnu rychlosti za běhu celého systému. V levé části simulace je aktivní hodnota sw = 2 (nejrychlejší režim). Následně uprostřed grafu dojde k přepnutí přepínačů na hodnotu sw = 8 (binárně 1000, aktivní nejvyšší přepínač sw(3)), což představuje nejpomalejší režim dýchání. Lze zřetelně pozorovat, že po této změně systém změní svou logiku a korektně čeká, až vnitřní čítač cnt napočítá do své maximální hodnoty 15 (zobrazeno hexadecimálně jako f). Teprve v ten moment vygeneruje úzký pulz ce_out. Přechod mezi rychlostmi je synchronní, čistý a nevytváří žádné hazardní stavy (glitche).
+Tento snímek perfektně demonstruje dynamickou změnu rychlosti za běhu celého systému. V levé části simulace je aktivní hodnota sw = 2 (nejrychlejší režim). Následně uprostřed grafu dojde k přepnutí přepínačů na hodnotu sw = 8 (binárně 1000, aktivní nejvyšší přepínač sw(3)), což představuje nejpomalejší režim dýchání. Lze zřetelně pozorovat, že po této změně systém změní svou logiku a korektně čeká, až vnitřní čítač cnt napočítá do své maximální hodnoty 15 (zobrazeno hexadecimálně jako f). Teprve v ten moment vygeneruje úzký pulz ce_out. Přechod mezi rychlostmi je synchronní, čistý a nevytváří žádné hazardní stavy.
 
 ### **Odkaz na testbench**
 **[Zobrazit testbench](PWM_Breathing_LED/pwm.srcs/sim_1/new/tb_pwm_top.vhd)**
@@ -143,8 +143,11 @@ Tento snímek perfektně demonstruje dynamickou změnu rychlosti za běhu celéh
 ## **Git Flow**
 Vývoj projektu probíhal formou týmové spolupráce. I když je většina commitů provedena z jednoho účtu, veškeré úpravy kódu, návrh architektury a ladění simulací byly prováděny oběma členy týmu současně (50/50).
 
-## **Ostatní výstupy**
+## **Odkazy na designové soubory**
 * **TOP level VHDL:** [Zobrazit pwm_top.vhd](PWM_Breathing_LED/pwm.srcs/sources_1/new/pwm_top.vhd)
+* **Modul speed_ctrl:** [Zobrazit speed_ctrl.vhd](PWM_Breathing_LED/pwm.srcs/sources_1/new/speed_ctrl.vhd)
+  
+## **Ostatní výstupy**
 * **Video ukázka:** [Video bude doplněno po natočení]
 * **Poster:** [Obrázek posteru bude doplněn po vytvoření]
 * **Seznam použitých nástrojů:**
