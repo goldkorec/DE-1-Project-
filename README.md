@@ -143,9 +143,12 @@ Tento snímek perfektně demonstruje dynamickou změnu rychlosti za běhu celéh
 ## **Git Flow**
 Vývoj projektu probíhal formou týmové spolupráce. I když je většina commitů provedena z jednoho účtu, veškeré úpravy kódu, návrh architektury a ladění simulací byly prováděny oběma členy týmu současně (50/50).
 
-## **Odkazy na designové soubory**
+## **Odkazy na designové a ostatní soubory**
 * **TOP level VHDL:** [Zobrazit pwm_top.vhd](PWM_Breathing_LED/pwm.srcs/sources_1/new/pwm_top.vhd)
 * **Modul speed_ctrl:** [Zobrazit speed_ctrl.vhd](PWM_Breathing_LED/pwm.srcs/sources_1/new/speed_ctrl.vhd)
+* **Modul clk_en:** [Zobrazit clk_en.vhd](PWM_Breathing_LED/pwm.srcs/sources_1/imports/new/clk_en.vhd)
+* **Modul counter:** [Zobrazit counter.vhd](PWM_Breathing_LED/pwm.srcs/sources_1/imports/new/counter.vhd)
+* **Constrain file nexys:** [Zobrazit nexys.xdc](PWM_Breathing_LED/pwm.srcs/constrs_1/new/nexys.xdc)
   
 ## **Ostatní výstupy**
 * **Video ukázka:** [Video bude doplněno po natočení]
