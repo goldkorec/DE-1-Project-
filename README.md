@@ -125,7 +125,7 @@ Tento snímek detailně zachycuje okamžik shody. Při dosažení hodnoty 7 (111
 
 **![](images/sim8.png)**
 
-Tento snímek perfektně demonstruje dynamickou změnu rychlosti za běhu celého systému. V levé části simulace je aktivní hodnota sw = 2 (nejrychlejší režim). Následně uprostřed grafu dojde k přepnutí přepínačů na hodnotu sw = 8 (binárně 1000, aktivní nejvyšší přepínač sw(3)), což představuje nejpomalejší režim dýchání. Lze zřetelně pozorovat, že po této změně systém změní svou logiku a korektně čeká, až vnitřní čítač cnt napočítá do své maximální hodnoty 15 (zobrazeno hexadecimálně jako f). Teprve v ten moment vygeneruje úzký pulz ce_out. Přechod mezi rychlostmi je synchronní, čistý a nevytváří žádné hazardní stavy.
+Snímek dokumentuje reakci systému na změnu uživatelského vstupu na hodnotu 2 (binárně 0010), což odpovídá aktivaci přepínače sw(1).
 
 ### **Odkaz na testbench**
 **[Zobrazit testbench](PWM_Breathing_LED/pwm.srcs/sim_1/new/tb_pwm_top.vhd)**
