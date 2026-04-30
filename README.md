@@ -125,7 +125,6 @@ Tento snímek detailně zachycuje okamžik shody, kdy vnitřní čítač cnt dos
 
 **![](images/sim8.png)**
 
-Snímek dokumentuje reakci systému na změnu uživatelského vstupu na hodnotu 2 (binárně 0010), což odpovídá aktivaci přepínače sw(1). Vzhledem k implementaci pomocí konstrukce if-elsif vykazuje tento přepínač vysokou prioritu. Dojde k okamžité změně frekvence generování pulzů ce_out. Tento režim představuje nejrychlejší variantu změny jasu, kdy je každý platný vstupní puls ce_in okamžitě propagován na výstup, čímž je dosaženo maximální rychlosti dýchání LED.
 
 ### **Odkaz na testbench**
 **[Zobrazit testbench](PWM_Breathing_LED/pwm.srcs/sim_1/new/tb_pwm_top.vhd)**
