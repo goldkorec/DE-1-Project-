@@ -122,7 +122,6 @@ Na počátku simulace je nastaven vektor přepínačů na hodnotu 4 (binárně 0
 
 **![](images/sim7.png)**
 
-Detailní pohled na generování povolovacího pulzu ce_out v modulu speed_ctrl. Přepínač je zde nastaven na hodnotu 4 (binárně 0100, tedy je aktivní sw(2)). V tomto režimu vnitřní 4bitový čítač cnt počítá vstupní 1kHz pulzy a signál ce_out je propuštěn logikou pouze tehdy, když spodní tři bity čítače dosáhnou logické jedničky (v kódu definováno jako cnt(2 downto 0) = "111"). To v praxi znamená, že modul propouští každý 8. pulz. Snímek potvrzuje přesnou funkci děličky pro tento konkrétní vstup.
 
 **![](images/sim8.png)**
 
