@@ -124,7 +124,7 @@ Na počátku simulace je vektor přepínačů nastaven na hodnotu 4 (binárně 0
 Tento snímek detailně zachycuje okamžik shody, kdy vnitřní čítač cnt dosáhne hodnoty 7 (binárně 111), což vyvolá generování synchronního pulzu na výstupu ce_out. Šířka tohoto pulzu odpovídá přesně jedné periodě hodinového signálu clk, což je kritické pro stabilitu následných sekvenčních obvodů a zamezení vícenásobné inkrementace v rámci jednoho cyklu. Tato precizní synchronizace potvrzuje správné časování modulu, kde ce_out slouží jako spolehlivý aktivační signál pro čítač jasu, čímž je zajištěna plynulá a kontrolovaná změna střídy PWM bez vzniku logických hazardů.
 
 **![](images/sim8.png)**
-Snímek dokumentuje dynamickou reakci systému na změnu uživatelského vstupu na hodnotu 2 (binárně 0010), což odpovídá aktivaci přepínače sw(1). Vzhledem k implementaci pomocí prioritní konstrukce if-elsif vykazuje tento vstup nejvyšší prioritu, což vede k okamžité
+Snímek dokumentuje dynamickou reakci systému na změnu uživatelského vstupu na hodnotu 2 (binárně 0010), což odpovídá aktivaci přepínače sw(1). Vzhledem k implementaci pomocí prioritní konstrukce if-elsif vykazuje tento vstup nejvyšší prioritu, což vede k okamžité rekonfiguraci frekvence generování pulzů ce_out bez přechodových jevů. Tento režim představuje nejrychlejší variantu změny jasu, kdy je každý platný vstupní puls ce_in bez dalšího
 
 ### **Odkaz na testbench**
 **[Zobrazit testbench](PWM_Breathing_LED/pwm.srcs/sim_1/new/tb_pwm_top.vhd)**
