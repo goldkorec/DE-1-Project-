@@ -121,7 +121,7 @@ Na počátku simulace je vektor přepínačů nastaven na hodnotu 4 (binárně 0
 
 
 **![](images/sim7.png)**
-
+Tento snímek detailně zachycuje okamžik shody, kdy vnitřní čítač cnt dosáhne hodnoty 7 (binárně 111), což vyvolá generování synchronního pulzu na výstupu ce_out. Šířka tohoto pulzu
 
 **![](images/sim8.png)**
 
