@@ -127,6 +127,7 @@ Tento snímek detailně zachycuje okamžik shody, kdy vnitřní čítač cnt dos
 Snímek dokumentuje dynamickou reakci systému na změnu uživatelského vstupu na hodnotu 2 (binárně 0010), což odpovídá aktivaci přepínače sw(1). Vzhledem k implementaci pomocí prioritní konstrukce if-elsif vykazuje tento vstup nejvyšší prioritu, což vede k okamžité rekonfiguraci frekvence generování pulzů ce_out bez přechodových jevů. Tento režim představuje nejrychlejší variantu změny jasu, kdy je každý platný vstupní puls ce_in bez dalšího dělení propagován na výstup, čímž je dosaženo maximální strmosti „breathing“ efektu a ověřena schopnost systému plynule adaptovat časování za běhu.
 
 ### **Shrnutí simulace**
+Simulace potvrdila, že modul speed_ctrl plně odpovídá specifikaci. Jednotlivé stavy přepínačů korelují s hustotou výstupních pulzů a systém korektně ošetřuje priority jednotlivých vstupů. Synchronní návrh zajišťuje stabilitu bez hazardních stavů v logice.
 
 
 ### **Odkaz na testbench**
