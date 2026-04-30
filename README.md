@@ -121,7 +121,7 @@ Na počátku simulace je vektor přepínačů nastaven na hodnotu 4 (binárně 0
 
 
 **![](images/sim7.png)**
-Tento snímek detailně zachycuje okamžik shody, kdy vnitřní čítač cnt dosáhne hodnoty 7 (binárně 111), což vyvolá generování synchronního pulzu na výstupu ce_out. Šířka tohoto pulzu odpovídá přesně jedné periodě hodinového signálu clk, což je kritické pro stabilitu následných sekvenčních obvodů a zamezení vícenásobné inkrementace v rámci jednoho cyklu. Tato precizní synchronizace potvrzuje správné časování modulu, kde ce_out
+Tento snímek detailně zachycuje okamžik shody, kdy vnitřní čítač cnt dosáhne hodnoty 7 (binárně 111), což vyvolá generování synchronního pulzu na výstupu ce_out. Šířka tohoto pulzu odpovídá přesně jedné periodě hodinového signálu clk, což je kritické pro stabilitu následných sekvenčních obvodů a zamezení vícenásobné inkrementace v rámci jednoho cyklu. Tato precizní synchronizace potvrzuje správné časování modulu, kde ce_out slouží jako spolehlivý aktivační signál pro čítač jasu, čímž je zajištěna plynulá a kontrolovaná změna střídy PWM bez vzniku logických hazardů.
 
 **![](images/sim8.png)**
 
