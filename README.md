@@ -118,7 +118,6 @@ Místo izolované simulace jsme zvolili integrační testování v rámci TOP le
 
 **![](images/sim6.png)**
 
-Tento snímek zachycuje širší pohled na simulaci vnitřních signálů, konkrétně rychlého 8bitového čítače sig_cnt_pwm (nahoře), který tvoří základ pro generování PWM signálu a neustále cyklicky přetéká z hodnoty 255 na 0. Ve spodní části je vidět vstupní sběrnice sw, která se v průběhu mění z hodnoty 4 na 0 (výchozí stav). Modul speed_ctrl na tuto změnu okamžitě a plynule reaguje úpravou frekvence výstupních pulzů ce_out, a to zcela bez přerušení nebo ovlivnění chodu hlavního PWM čítače.
 
 **![](images/sim7.png)**
 
