@@ -125,7 +125,7 @@ Tento snímek detailně zachycuje okamžik shody. Při dosažení hodnoty 7 (111
 
 **![](images/sim8.png)**
 
-Snímek dokumentuje reakci systému na změnu uživatelského vstupu na hodnotu 2 (binárně 0010), což odpovídá aktivaci přepínače sw(1).
+Snímek dokumentuje reakci systému na změnu uživatelského vstupu na hodnotu 2 (binárně 0010), což odpovídá aktivaci přepínače sw(1). Vzhledem k implementaci pomocí konstrukce if-elsif vykazuje tento přepínač vysokou prioritu.
 
 ### **Odkaz na testbench**
 **[Zobrazit testbench](PWM_Breathing_LED/pwm.srcs/sim_1/new/tb_pwm_top.vhd)**
