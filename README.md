@@ -154,7 +154,7 @@ Vývoj projektu probíhal formou týmové spolupráce. I když je většina comm
   
 ## **Ostatní výstupy**
 * **Video ukázka:** [Video bude doplněno po natočení]
-* **Poster:** [Obrázek posteru bude doplněn po vytvoření]
+* **Poster:** [Zobrazit poster](images/PWMplakat.pdf)
 * **Seznam použitých nástrojů:**
     * **Vivado 2025.2 (VHDL)** (Návrh, syntéza, simulace)
     * **GitHub** (Verzování kódu)
