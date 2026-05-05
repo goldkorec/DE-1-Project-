@@ -76,15 +76,26 @@ Modul využívá vnitřní 4bitový čítač `cnt` k dělení vstupní frekvence
 *Priorita je dána pořadím v kódu: sw(1) > sw(0) > sw(2) > sw(3).*
 
 ## **Časování a ostatní parametry:**
-**1. Systémové signály**:
-- **Hodiny (clk):** 100 MHz (perioda 10 ns)
-- **Reset (rst):** Active-Low - v top levelu invertován na `sig_rst_inv`
+**1. časování a systémové signály**:
+-**Systémové hodiny (clk): Pracovní frekvence 100 MHz (perioda 10 ns) definuje základní časový takt pro všechny synchronní operace.**
+- **Reset (rst): Implementován jako Active-Low (v souladu s tlačítkem CPU_RESET na desce Nexys). V top-level architektuře je signál invertován na sig_rst_inv (Active-High), aby korektně resetoval vnitřní registry a čítače.**
 
-**2. Parametry PWM modulace:**
-- **Rozlišení:** 8 bitů (256 úrovní střídy)
-- **Frekvence PWM:** cca 390,6 kHz ($100\ \text{MHz}/256$) - zamezuje viditelnému blikání.
+**2. Parametry PWM modulace a jasu:**
+- **Rozlišení PWM: 8 bitů (256 úrovní střídy), což umožňuje jemné odstupňování intenzity jasu bez viditelných skoků.**
+- **Frekvence PWM:** cca 390,6 kHz ($100\ \text{MHz}/256$) - zamezuje viditelnému blikání.**
+-**Algoritmus „dýchání“: Využití 9bitového čítače (rozsah 0–511). Nejdůležitější bit (MSB) slouží jako indikátor fáze:**
 
-**3. Parametry dýchání:**
+**MSB = 0: Fáze inkrementace (jas roste).**
+
+**MSB = 1: Fáze degradace (jas klesá pomocí bitové inverze not).**
+
+**3. Konfigurace rychlosti a ovládací prvky (Switche)**
+- **Rychlost vizuálního efektu je řízena pomocí prioritního dekodéru napojeného na přepínače sw(3:0) na vývojové desce. Tato logika určuje, jak často je generován povolovací puls ce_out pro čítač jasu.**
+- **Základní časová základna: Hlavní dělička (G_MAX = 500 000) generuje puls ce_in s frekvencí 200 Hz.**
+- **Délka cyklu: Při výchozím nastavení trvá kompletní cyklus dýchání (rozsvícení a zhasnutí) 2,56 sekundy. Volbou přepínačů lze tento čas dynamicky zkracovat nebo prodlužovat bez nutnosti restartu systému.**
+
+
+**4. Parametry dýchání:**
 - **Řízení směru:** 9bitový čítač (0-511), 9. bit (MSB) určuje směr (0 - jas roste, 1 - jas klesá).
 - **Rychlost krokování:** Dělička frekvence (`G_MAX` = 500 000) generuje povolovací pulz s frekvencí 200 Hz.
 - **Délka cyklu:** Kompletní cyklus trvá 2,56 sekundy (1,28 s rozsvěcování, 1,28 s zhasínání).
