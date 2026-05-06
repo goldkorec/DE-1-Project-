@@ -85,7 +85,7 @@ Modul využívá vnitřní 4bitový čítač `cnt` k dělení vstupní frekvence
 **2. Parametry PWM modulace a jasu:**
 * **Rozlišení PWM**: 8 bitů (256 úrovní střídy), což umožňuje jemné odstupňování intenzity jasu bez viditelných skoků.
 * **Frekvence PWM**: cca 390,6 kHz (100 MHz / 256) – tato vysoká frekvence zcela zamezuje viditelnému blikání.
-* **Algoritmus „dýchání“**: Využívá 9bitový čítač (rozsah 0–511). Nejdůležitější bit (MSB, tj. 9. bit) slouží jako indikátor fáze:
+* **Algoritmus „dýchání“**: Využívá 9bitový čítač (rozsah 0–511). Nejdůležitější bit (MSB, tj. 9. bit) slouží jako indikátor fáze (směru):
   * **MSB = 0**: Fáze inkrementace (jas postupně roste).
   * **MSB = 1**: Fáze degradace (jas klesá pomocí bitové inverze – operátor `not` na spodních 8 bitů).
 
