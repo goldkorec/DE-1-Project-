@@ -179,3 +179,5 @@ https://github.com/user-attachments/assets/fb2f9656-cb81-44cb-86e7-29c6151ee963
     * **GitHub** (Verzování kódu)
     * **ProfiCAD** (Tvorba blokového schématu)
 * **Reference:**
+    * **(https://vhdl.lapinoo.net/)**
+    * **(https://vhdlwhiz.com/pwm-controller/)** 
