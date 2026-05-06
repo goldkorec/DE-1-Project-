@@ -180,6 +180,7 @@ https://github.com/user-attachments/assets/fb2f9656-cb81-44cb-86e7-29c6151ee963
     * **ProfiCAD** (Tvorba blokového schématu)
 * **Reference:**
     * **https://vhdl.lapinoo.net**
+    * **https://vhdlwhiz.com/**
     * **https://vhdlwhiz.com/pwm-controller**
     * **https://www.youtube.com/watch?v=M2Vim8bM7aA**
     * **Studijní materiály a prezentace z předmětu DE-1 (VUT FEKT Brno 2026)** 
