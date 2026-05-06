@@ -166,8 +166,8 @@ Vývoj projektu probíhal formou týmové spolupráce. I když je většina comm
 ## **Ostatní výstupy**
 
 ### **Video ukázka:** 
-[![Přehrát video](https://youtu.be/3Z8KkcZdlLM)](https://youtube.com)
 
+https://github.com/user-attachments/assets/fb2f9656-cb81-44cb-86e7-29c6151ee963
 
 * **Poster:** [Zobrazit poster](images/PWMplakat.pdf)
 * **Seznam použitých nástrojů:**
