@@ -164,7 +164,10 @@ Vývoj projektu probíhal formou týmové spolupráce. I když je většina comm
 * **Constrain file nexys:** [Zobrazit nexys.xdc](PWM_Breathing_LED/pwm.srcs/constrs_1/new/nexys.xdc)
   
 ## **Ostatní výstupy**
-* **Video ukázka:** [Video bude doplněno po natočení]
+
+### **Video ukázka:** 
+[Zobrazit video](images/demo (2).mov)
+
 * **Poster:** [Zobrazit poster](images/PWMplakat.pdf)
 * **Seznam použitých nástrojů:**
     * **Vivado 2025.2 (VHDL)** (Návrh, syntéza, simulace)
