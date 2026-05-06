@@ -97,7 +97,7 @@ Rychlost vizuálního efektu je řízena vlastním modulem `speed_ctrl`, který 
   * `sw(0) = 1`: Rychlé – puls propuštěn každý 2. takt (500 Hz, cyklus trvá cca 1,02 s).
   * `sw(2) = 1`: Pomalé – puls propuštěn každý 8. takt (125 Hz, cyklus trvá cca 4,10 s).
   * `sw(3) = 1`: Nejpomalejší – puls propuštěn každý 16. takt (62,5 Hz, cyklus trvá cca 8,19 s).
-  * **Výchozí stav** (sw(1)-sw(3) vypnuty): Puls je propuštěn každý 4. takt (250 Hz).
+  * **Výchozí stav** (sw1-3 vypnuty): Puls je propuštěn každý 4. takt (250 Hz).
 
 **4. Parametry dýchání (Výchozí stav):**
 * **Řízení směru**: 9bitový čítač (0–511). 9. bit (MSB) určuje směr (0 = jas roste, 1 = jas klesá).
