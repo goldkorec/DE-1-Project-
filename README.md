@@ -161,6 +161,7 @@ Simulace potvrdila, že modul speed_ctrl plně odpovídá specifikaci. Jednotliv
 Vývoj projektu probíhal formou týmové spolupráce. I když je většina commitů provedena z jednoho účtu, veškeré úpravy kódu, návrh architektury a ladění simulací byly prováděny oběma členy týmu současně (50/50).
 
 ## **Odkazy na designové a ostatní soubory**
+* **Projektový soubor pwm.xpr:** [Zobrazit pwm.xpr](PWM_Breathing_LED/pwm.xpr)
 * **TOP level VHDL:** [Zobrazit pwm_top.vhd](PWM_Breathing_LED/pwm.srcs/sources_1/new/pwm_top.vhd)
 * **Modul speed_ctrl:** [Zobrazit speed_ctrl.vhd](PWM_Breathing_LED/pwm.srcs/sources_1/new/speed_ctrl.vhd)
 * **Modul clk_en:** [Zobrazit clk_en.vhd](PWM_Breathing_LED/pwm.srcs/sources_1/imports/new/clk_en.vhd)
