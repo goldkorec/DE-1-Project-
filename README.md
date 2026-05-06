@@ -75,31 +75,35 @@ Modul využívá vnitřní 4bitový čítač `cnt` k dělení vstupní frekvence
 
 *Priorita je dána pořadím v kódu: sw(1) > sw(0) > sw(2) > sw(3).*
 
-## **Časování a ostatní parametry:**
-**1. časování a systémové signály**:
--**Systémové hodiny (clk): Pracovní frekvence 100 MHz (perioda 10 ns) definuje základní časový takt pro všechny synchronní operace.**
-- **Reset (rst): Implementován jako Active-Low (v souladu s tlačítkem CPU_RESET na desce Nexys). V top-level architektuře je signál invertován na sig_rst_inv (Active-High), aby korektně resetoval vnitřní registry a čítače.**
+### Časování a ostatní parametry:
+
+**1. Časování a systémové signály:**
+* **Systémové hodiny (`clk`)**: Pracovní frekvence 100 MHz (perioda 10 ns) definuje základní časový takt pro všechny synchronní operace.
+* **Reset (`rst`)**: Implementován jako Active-Low (v souladu s tlačítkem CPU_RESET na desce Nexys). V top-level architektuře je signál pomocí hradla NOT invertován na `sig_rst_inv` (Active-High), aby korektně resetoval vnitřní registry a čítače.
+* **Povolovací signál (`en`)**: Celkový enable signál, který podmiňuje jakýkoliv výstup PWM modulace. Pokud je '0', všechny PWM výstupy jsou na logické nule.
 
 **2. Parametry PWM modulace a jasu:**
-- **Rozlišení PWM: 8 bitů (256 úrovní střídy), což umožňuje jemné odstupňování intenzity jasu bez viditelných skoků.**
-- **Frekvence PWM:** cca 390,6 kHz ($100\ \text{MHz}/256$) - zamezuje viditelnému blikání.**
--**Algoritmus „dýchání“: Využití 9bitového čítače (rozsah 0–511). Nejdůležitější bit (MSB) slouží jako indikátor fáze:**
+* **Rozlišení PWM**: 8 bitů (256 úrovní střídy), což umožňuje jemné odstupňování intenzity jasu bez viditelných skoků.
+* **Frekvence PWM**: cca 390,6 kHz (100 MHz / 256) – tato vysoká frekvence zcela zamezuje viditelnému blikání.
+* **Algoritmus „dýchání“**: Využívá 9bitový čítač (rozsah 0–511). Nejdůležitější bit (MSB, tj. 9. bit) slouží jako indikátor fáze:
+  * **MSB = 0**: Fáze inkrementace (jas postupně roste).
+  * **MSB = 1**: Fáze degradace (jas klesá pomocí bitové inverze – operátor `not` na spodních 8 bitů).
 
-**MSB = 0: Fáze inkrementace (jas roste).**
+**3. Konfigurace rychlosti a ovládací prvky (Switche):**
+Rychlost vizuálního efektu je řízena vlastním modulem `speed_ctrl`, který využívá prioritní dekodér napojený na přepínače `sw(3:0)`. Tato logika určuje, jak často je generován povolovací puls `ce_out` (`sig_ce_brightness`) pro čítač jasu na základě interního 4bitového čítače.
+* **Základní časová základna**: Hlavní dělička (`clk_en`) používá parametr `G_MAX = 100 000`, což generuje puls `ce_in` s frekvencí **1 kHz** (1000 Hz).
+* **Dynamické přepínání rychlostí (priorita odshora dolů):**
+  * `sw(1) = 1`: Nejrychlejší – puls propuštěn při každém taktu 1 kHz (cyklus trvá cca 0,51 s).
+  * `sw(0) = 1`: Rychlé – puls propuštěn každý 2. takt (500 Hz, cyklus trvá cca 1,02 s).
+  * `sw(2) = 1`: Pomalé – puls propuštěn každý 8. takt (125 Hz, cyklus trvá cca 4,10 s).
+  * `sw(3) = 1`: Nejpomalejší – puls propuštěn každý 16. takt (62,5 Hz, cyklus trvá cca 8,19 s).
+  * **Výchozí stav** (všechny switche vypnuty): Puls je propuštěn každý 4. takt (250 Hz).
 
-**MSB = 1: Fáze degradace (jas klesá pomocí bitové inverze not).**
-
-**3. Konfigurace rychlosti a ovládací prvky (Switche)**
-- **Rychlost vizuálního efektu je řízena pomocí prioritního dekodéru napojeného na přepínače sw(3:0) na vývojové desce. Tato logika určuje, jak často je generován povolovací puls ce_out pro čítač jasu.**
-- **Základní časová základna: Hlavní dělička (G_MAX = 500 000) generuje puls ce_in s frekvencí 200 Hz.**
-- **Délka cyklu: Při výchozím nastavení trvá kompletní cyklus dýchání (rozsvícení a zhasnutí) 2,56 sekundy. Volbou přepínačů lze tento čas dynamicky zkracovat nebo prodlužovat bez nutnosti restartu systému.**
-
-
-**4. Parametry dýchání:**
-- **Řízení směru:** 9bitový čítač (0-511), 9. bit (MSB) určuje směr (0 - jas roste, 1 - jas klesá).
-- **Rychlost krokování:** Dělička frekvence (`G_MAX` = 500 000) generuje povolovací pulz s frekvencí 200 Hz.
-- **Délka cyklu:** Kompletní cyklus trvá 2,56 sekundy (1,28 s rozsvěcování, 1,28 s zhasínání).
-
+**4. Parametry dýchání (Výchozí stav):**
+* **Řízení směru**: 9bitový čítač (0–511). 9. bit (MSB) určuje směr (0 = jas roste, 1 = jas klesá).
+* **Rychlost krokování**: Při výchozím stavu (žádný switch není nahozen) generuje `speed_ctrl` povolovací pulz s frekvencí **250 Hz**.
+* **Délka cyklu**: Ve výchozím stavu trvá kompletní cyklus dýchání (plné rozsvícení a zhasnutí, tj. 512 kroků) přibližně **2,05 sekundy** (cca 1,02 s rozsvěcování a 1,02 s zhasínání). Volbou přepínačů na desce lze tento čas za běhu dynamicky zkracovat nebo prodlužovat bez nutnosti restartu systému.
+  
 ## **Simulace**
 
 **![](images/sim1.png)** 
