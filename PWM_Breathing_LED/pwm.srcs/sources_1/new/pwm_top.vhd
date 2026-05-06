@@ -24,7 +24,7 @@ architecture Behavioral of pwm_top is
 
 begin
 
-    sig_rst_inv <= not rst;
+    sig_rst_inv <= rst;
 
     clk_en_inst : entity work.clk_en
         generic map (
