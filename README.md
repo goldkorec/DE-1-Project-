@@ -163,12 +163,11 @@ Vývoj projektu probíhal formou týmové spolupráce. I když je většina comm
 * **Modul counter:** [Zobrazit counter.vhd](PWM_Breathing_LED/pwm.srcs/sources_1/imports/new/counter.vhd)
 * **Constrain file nexys:** [Zobrazit nexys.xdc](PWM_Breathing_LED/pwm.srcs/constrs_1/new/nexys.xdc)
   
-## **Ostatní výstupy**
-
 ### **Video ukázka:** 
 
 https://github.com/user-attachments/assets/fb2f9656-cb81-44cb-86e7-29c6151ee963
 
+## **Ostatní výstupy**
 * **Poster:** [Zobrazit poster](images/PWMplakat.pdf)
 * **Seznam použitých nástrojů:**
     * **Vivado 2025.2 (VHDL)** (Návrh, syntéza, simulace)
