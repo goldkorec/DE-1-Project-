@@ -15,7 +15,7 @@ Frekvence: Musí být dostatečně vysoká, aby oko díky své setrvačnosti vyh
 
 ## **Schéma**
 
-**![](images/schema1.png
+**![](images/schema.png
 )**
 
 ## **Základní parametry**
