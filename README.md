@@ -93,11 +93,11 @@ Modul využívá vnitřní 4bitový čítač `cnt` k dělení vstupní frekvence
 Rychlost vizuálního efektu je řízena vlastním modulem `speed_ctrl`, který využívá prioritní dekodér napojený na přepínače `sw(3:0)`. Tato logika určuje, jak často je generován povolovací puls `ce_out` (`sig_ce_brightness`) pro čítač jasu na základě interního 4bitového čítače.
 * **Základní časová základna**: Hlavní dělička (`clk_en`) používá parametr `G_MAX = 100 000`, což generuje puls `ce_in` s frekvencí **1 kHz** (1000 Hz).
 * **Dynamické přepínání rychlostí (priorita odshora dolů):**
-  * `sw(1) = 1`: Nejrychlejší – puls propuštěn při každém taktu 1 kHz (cyklus trvá cca 0,51 s).
-  * `sw(0) = 1`: Rychlé – puls propuštěn každý 2. takt (500 Hz, cyklus trvá cca 1,02 s).
-  * `sw(2) = 1`: Pomalé – puls propuštěn každý 8. takt (125 Hz, cyklus trvá cca 4,10 s).
-  * `sw(3) = 1`: Nejpomalejší – puls propuštěn každý 16. takt (62,5 Hz, cyklus trvá cca 8,19 s).
-  * **Výchozí stav** (sw1-3 vypnuty): Puls je propuštěn každý 4. takt (250 Hz).
+  * **Výchozí rychlost** (po zapnutí SW0, ostatní switche vypnuty): Puls je propuštěn každý 4. takt (250 Hz).
+  * **SW1** (`sw(0) = 1`): Rychlé dýchání – puls propuštěn každý 2. takt (500 Hz).
+  * **SW2** (`sw(1) = 1`): Maximální rychlost – puls propuštěn při každém taktu (1 kHz). Má nejvyšší prioritu.
+  * **SW3** (`sw(2) = 1`): Pomalé dýchání – puls propuštěn každý 8. takt (125 Hz).
+  * **SW4** (`sw(3) = 1`): Nejpomalejší dýchání – puls propuštěn každý 16. takt (62,5 Hz).
 
 **4. Parametry dýchání (Výchozí stav):**
 * **Řízení směru**: 9bitový čítač (0–511). 9. bit (MSB) určuje směr (0 = jas roste, 1 = jas klesá).
