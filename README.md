@@ -29,7 +29,7 @@ Modul `pwm_top` zastřešuje celou hierarchii projektu. Propojuje děličku frek
 | Port | Směr | Typ | Šířka | Popis |
 | :--- | :---: | :---: | :---: | :--- |
 | **clk** | in | std_logic | 1 bit | Hlavní hodinový signál desky (100 MHz). |
-| **rst** | in | std_logic | 1 bit | Reset systému (na desce Nexys A7 Active-Low). V top levelu invertován. |
+| **rst** | in | std_logic | 1 bit | Reset systému (na desce Nexys A7 Active-High).|
 | **en** | in | std_logic | 1 bit | Povolovací signál (Switch J15), aktivuje výstup PWM na LED. |
 | **sw** | in | std_logic_vector | 4 bity | Přepínače pro volbu rychlosti dýchání. |
 | **pwm_out** | out | std_logic_vector | 16 bitů | Výstupní sběrnice připojená k 16 LED diodám. |
@@ -79,7 +79,7 @@ Modul využívá vnitřní 4bitový čítač `cnt` k dělení vstupní frekvence
 
 **1. Časování a systémové signály:**
 * **Systémové hodiny (`clk`)**: Pracovní frekvence 100 MHz (perioda 10 ns) definuje základní časový takt pro všechny synchronní operace.
-* **Reset (`rst`)**: Implementován jako Active-Low (v souladu s tlačítkem CPU_RESET na desce Nexys). V top-level architektuře je signál pomocí hradla NOT invertován na `sig_rst_inv` (Active-High), aby korektně resetoval vnitřní registry a čítače.
+* **Reset (`rst`)**: Implementován jako Active-High. Tlačítkem M18 provedeme reset systému.
 * **Povolovací signál (`en`)**: Celkový enable signál, který podmiňuje jakýkoliv výstup PWM modulace. Pokud je '0', všechny PWM výstupy jsou na logické nule.
 
 **2. Parametry PWM modulace a jasu:**
