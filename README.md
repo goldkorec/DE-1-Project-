@@ -152,8 +152,8 @@ Simulace potvrdila, že modul speed_ctrl plně odpovídá specifikaci. Jednotliv
 
 | Resource | Estimation | Available | Utilization [%] |
 | :--- | :---: | :---: | :---: |
-| **LUT (Logic)** | 32 | 32 600 | 0.10 |
-| **FF (Registers)** | 55 | 65 200 | 0.08 |
+| **LUT (Logic)** | 29 | 32 600 | 0.09 |
+| **FF (Registers)** | 41 | 65 200 | 0.06 |
 | **IO (Pins)** | 23 | 210 | 10.95 |
 | **BUFG** | 1 | 32 | 3.13 |
 
